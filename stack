@@ -1,0 +1,599 @@
+import java.util.Stack;
+
+public class Stacks {
+
+    public class Main {
+        public static void main(String[] args) {
+
+            Stack<Integer> s1 = new Stack<Integer>();
+
+            s1.push(10);
+            s1.push(20);
+            s1.push(30);
+
+            System.out.println(s1.toString());
+        }
+    }
+}
+
+
+
+
+
+    public static void main(String[] args) {
+
+        Stack<Integer> s1 = new Stack<Integer>();
+
+        s1.push(10);
+        s1.push(20);
+        s1.push(30);
+
+        System.out.println("Original Stack: " + s1.toString());
+
+        int top = s1.peek();
+        System.out.println("top element: " + top);
+        System.out.println("Stack after accessing top element: " + s1);
+
+        int out = s1.pop();
+        System.out.println("Removed element: " + out);
+        System.out.println("Stack after Pop Operation: " + s1);
+    }
+
+
+class Box<T> {
+
+    private T item;
+
+    public void set(T item) {
+        this.item = item;
+    }
+
+    public T get() {
+        return item;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Box<Integer> box1 = new Box<T>();
+
+        box1.set(25);
+        int age = box1.get();
+
+        Box<String> box2 = new Box<T>();
+
+        box2.set("Ali");
+        String name = box2.get();
+
+        // box1.set("Ali"); // Compile Error
+
+        System.out.println("box1 holds " + age);
+        System.out.println("box2 holds " + name);
+    }
+}
+
+class BankAccount {
+
+    private double balance;
+    private Stack<Double> history = new Stack<>();
+
+    public BankAccount(double balance) {
+        this.balance = balance;
+    }
+
+    public void deposit(double amount) {
+        balance = balance + amount;
+        history.push(amount);
+
+        System.out.println("Deposit " + amount
+                + " -> balance " + balance);
+    }
+
+    public void undoLastDeposit() {
+
+        if (history.isEmpty()) {
+            System.out.println("Nothing to undo");
+            return;
+        }
+
+        double last = history.pop();
+        balance = balance - last;
+
+        System.out.println("Undo " + last
+                + " -> balance " + balance);
+    }
+}
+
+public class UndoDepositDemo {
+
+    public static void main(String[] args) {
+
+        BankAccount acc = new BankAccount(100);
+
+        acc.deposit(50);
+        acc.deposit(20);
+        acc.deposit(30);
+
+        acc.undoLastDeposit();
+        acc.undoLastDeposit();
+    }
+}
+
+
+class BankAccount {
+
+    private double balance;
+    private Stack<Double> history = new Stack<>();
+
+    public BankAccount(double balance) {
+        this.balance = balance;
+    }
+
+    public void deposit(double amount) {
+        balance = balance + amount;
+        history.push(amount);
+
+        System.out.println("Deposit " + amount
+                + " -> balance " + balance);
+    }
+
+    public void undoLastDeposit() {
+
+        if (history.isEmpty()) {
+            System.out.println("Nothing to undo");
+            return;
+        }
+
+        double last = history.pop();
+        balance = balance - last;
+
+        System.out.println("Undo " + last
+                + " -> balance " + balance);
+    }
+}
+
+public class UndoDepositDemo {
+
+    public static void main(String[] args) {
+
+        BankAccount acc = new BankAccount(100);
+
+        acc.deposit(50);
+        acc.deposit(20);
+        acc.deposit(30);
+
+        acc.undoLastDeposit();
+        acc.undoLastDeposit();
+    }
+}
+
+
+public class Reverser {
+
+    public String reverse(String input) {
+
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
+
+        String reversed = "";
+
+        while (!stack.isEmpty()) {
+            reversed += stack.pop();
+        }
+
+        return reversed;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner inputObject = new Scanner(System.in);
+
+        System.out.println("Enter String to Reverse: ");
+
+        String input = inputObject.nextLine();
+
+        Reverser test = new Reverser();
+
+        String result = test.reverse(input);
+
+        System.out.println("Reversed String: " + result);
+    }
+}
+
+
+public class ArrayStack<T> {
+
+    private final static int DEFAULT_CAPACITY = 2;
+
+    private int top;
+    private T[] stack;
+
+    public ArrayStack() {
+        this(DEFAULT_CAPACITY);
+    }
+
+    public ArrayStack(int initialCapacity) {
+        top = 0;
+        stack = (T[]) (new Object[initialCapacity]);
+    }
+
+    public void push(T element) {
+
+        if (size() == stack.length) {
+            expandCapacity();
+        }
+
+        stack[top] = element;
+        top++;
+    }
+
+    private void expandCapacity() {
+        stack = Arrays.copyOf(stack, stack.length * 2);
+    }
+
+    public T pop() throws EmptyStackException {
+
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+
+        top--;
+
+        T result = stack[top];
+
+        stack[top] = null;
+
+        return result;
+    }
+
+    public T peek() throws EmptyStackException {
+
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+
+        return stack[top - 1];
+    }
+
+    public int size() {
+        return top;
+    }
+
+    public boolean isEmpty() {
+        return top == 0;
+    }
+
+    public int capacity() {
+        return stack.length;
+    }
+}
+ArrayStack.java;
+
+public class ArrayStackTraceDemo {
+
+    public static void main(String[] args) {
+
+        ArrayStack<String> s = new ArrayStack<>();
+
+        s.push("A");
+        s.push("B");
+
+        System.out.println("size " + s.size()
+                + ", capacity " + s.capacity());
+
+        s.push("C");
+
+        System.out.println("size " + s.size()
+                + ", capacity " + s.capacity());
+
+        System.out.println("peek: " + s.peek());
+
+        System.out.println("pop: " + s.pop());
+        System.out.println("pop: " + s.pop());
+        System.out.println("pop: " + s.pop());
+        System.out.println("pop: " + s.pop());
+    }
+}
+
+public class EmptyCollectionException
+        extends RuntimeException {
+
+    public EmptyCollectionException(String collection) {
+
+        super("The " + collection + " is empty.");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        try {
+
+            throw new EmptyCollectionException("stack");
+
+        } catch (EmptyCollectionException e) {
+
+            System.out.println("Caught: " + e.getMessage());
+        }
+    }
+}
+
+public class TraverseDemo {
+
+    public static void main(String[] args) {
+
+        Node<Integer> head = new Node<>(17);
+
+        Node<Integer> n2 = new Node<>(92);
+        Node<Integer> n3 = new Node<>(63);
+        Node<Integer> n4 = new Node<>(45);
+
+        head.setNext(n2);
+        n2.setNext(n3);
+        n3.setNext(n4);
+
+        Node<Integer> current = head;
+
+        while (current != null) {
+
+            System.out.println(current.getElement());
+
+            current = current.getNext();
+        }
+    }
+}
+
+public class ReversedStepsDemo {
+
+    static void print(String label, Node<String> head) {
+
+        System.out.print(label);
+
+        Node<String> cur = head;
+
+        for (int i = 0; i < 5 && cur != null; i++) {
+
+            System.out.print(cur.getElement() + " -> ");
+
+            cur = cur.getNext();
+        }
+
+        System.out.println(cur == null ? "null" : "...");
+    }
+
+    public static void main(String[] args) {
+
+        // Correct order
+
+        Node<String> head = new Node<>("B");
+
+        Node<String> newNode = new Node<>("A");
+
+        newNode.setNext(head);
+
+        head = newNode;
+
+        print("Correct: ", head);
+
+
+        // Swapped order
+
+        head = new Node<>("B");
+
+        newNode = new Node<>("A");
+
+        head = newNode;
+
+        newNode.setNext(head);
+
+        print("Swapped: ", head);
+    }
+}
+
+public class Node<T> {
+
+    private T element;
+    private Node<T> next;
+
+    public Node() {
+        element = null;
+        next = null;
+    }
+
+    public Node(T element) {
+        this.element = element;
+        next = null;
+    }
+
+    public Node<T> getNext() {
+        return next;
+    }
+
+    public void setNext(Node<T> next) {
+        this.next = next;
+    }
+
+    public T getElement() {
+        return element;
+    }
+
+    public void setElement(T element) {
+        this.element = element;
+    }
+}
+
+public class LinkedStack<T> {
+
+    private int count;
+    private Node<T> top;
+
+    public LinkedStack() {
+        count = 0;
+        top = null;
+    }
+
+    public void push(T element) {
+
+        Node<T> temp = new Node<>(element);
+
+        temp.setNext(top);
+
+        top = temp;
+
+        count++;
+    }
+
+    public T pop() throws EmptyStackException {
+
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+
+        T result = top.getElement();
+
+        top = top.getNext();
+
+        count--;
+
+        return result;
+    }
+
+    public T peek() throws EmptyStackException {
+
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+
+        return top.getElement();
+    }
+
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+    public int size() {
+        return count;
+    }
+}
+public class LinkedStackTraceDemo {
+
+    public static void main(String[] args) {
+
+        LinkedStack<String> s = new LinkedStack<>();
+
+        s.push("A");
+        s.push("B");
+        s.push("C");
+
+        System.out.println("size: " + s.size());
+
+        System.out.println("peek: " + s.peek());
+
+        System.out.println("pop: " + s.pop());
+
+        System.out.println("size: " + s.size());
+
+        System.out.println("peek: " + s.peek());
+    }
+}
+class BankaCOUNT {
+
+    private double balance;
+
+    private LinkedStack<Double> history =
+            new LinkedStack<>();
+
+    public BankaCOUNT (double balance) {
+        this.balance = balance;
+    }
+
+    public void deposit(double amount) {
+
+        balance = balance + amount;
+
+        history.push(amount);
+
+        System.out.println("Deposit " + amount
+                + " -> balance " + balance);
+    }
+
+    public void undoLastDeposit() {
+
+        if (history.isEmpty()) {
+            System.out.println("Nothing to undo");
+            return;
+        }
+
+        double last = history.pop();
+
+        balance = balance - last;
+
+        System.out.println("Undo " + last
+                + " -> balance " + balance);
+    }
+}
+
+public class UndoDepositLinkedDemo {
+
+    public static void main(String[] args) {
+
+        BankAccount acc = new BankaCOUNT(100);
+
+        acc.deposit(50);
+        acc.deposit(20);
+        acc.deposit(30);
+
+        acc.undoLastDeposit();
+        acc.undoLastDeposit();
+    }
+}
+class Registration {
+
+    private LinkedStack<String> courses =
+            new LinkedStack<>();
+
+    public void addCourse(String code) {
+
+        courses.push(code);
+
+        System.out.println("Added " + code
+                + " | top: " + courses.peek()
+                + " | size: " + courses.size());
+    }
+
+    public void undoLastCourse() {
+
+        if (courses.isEmpty()) {
+            System.out.println("Nothing to undo");
+            return;
+        }
+
+        String removed = courses.pop();
+
+        System.out.println("Removed " + removed
+                + " | size: " + courses.size());
+    }
+}
+
+public class UndoCourseLinkedDemo {
+
+    public static void main(String[] args) {
+
+        Registration reg = new Registration();
+
+        reg.addCourse("CA314");
+        reg.addCourse("CA301");
+        reg.addCourse("MA210");
+
+        reg.undoLastCourse();
+        reg.undoLastCourse();
+    }
+}

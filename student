@@ -1,0 +1,393 @@
+// Class and Object
+
+class Student {
+    String name;
+    int id;
+    double gpa;
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Studentt s1 = new Studentt();
+
+        s1.name = "Ahmed";
+        s1.id = 1001;
+        s1.gpa = 3.7;
+
+        System.out.println("Name: " + s1.name);
+        System.out.println("ID: " + s1.id);
+        System.out.println("GPA: " + s1.gpa);
+    }
+}
+//constructor - student
+class Student {
+    int id;
+    String name;
+    String major;
+
+    Student(int sId, String sName, String sMajor) {
+        id = sId;
+        name = sName;
+        major = sMajor;
+    }
+
+    void printInfo() {
+        System.out.println(id + " - " + name + " (" + major + ")");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Studentt first = new Studentt(1001, "Hawa", "Computer Science");
+
+        Studentt second = new Studentt(1002, "Ali", "Information Technology");
+
+        first.printInfo();
+        second.printInfo();
+
+        second.major = "Computer Science";
+
+        second.printInfo();
+    }
+}
+class Student {
+    int id;
+    String name;
+    String major;
+
+    Student(int sId, String sName, String sMajor) {
+        id = sId;
+        name = sName;
+        major = sMajor;
+    }
+
+    void printInfo() {
+        System.out.println(id + " - " + name + " (" + major + ")");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Studentt first = new Studentt(1001, "Hawa", "Computer Science");
+
+        Studentt second = new Studentt(1002, "Ali", "Information Technology");
+
+        first.printInfo();
+        second.printInfo();
+
+        second.major = "Computer Science";
+
+        second.printInfo();
+    }
+}
+//Book classes
+class Book {
+    String title;
+    String author;
+    int pages;
+
+    Book(String bTitle, String bAuthor, int bPages) {
+        title = bTitle;
+        author = bAuthor;
+        pages = bPages;
+    }
+
+    void describe() {
+        System.out.println("\"" + title + "\" by " + author
+                + " - " + pages + " pages");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Book b1 = new Book("Clean Code", "Robert Martin", 464);
+
+        Book b2 = new Book("Java Software Structures", "Lewis & Chase", 592);
+
+        b1.describe();
+        b2.describe();
+    }
+}
+//courses class
+class Course {
+    String code;
+    String title;
+    int credits;
+
+    Course(String c, String t, int cr) {
+        code = c;
+        title = t;
+        credits = cr;
+    }
+
+    void printCourse() {
+        System.out.println(code + " - " + title + " (" + credits + " cr)");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Course c1 = new Course("CA314", "Data Structures", 3);
+
+        Course c2 = new Course("MA201", "Discrete Mathematics", 3);
+
+        c1.printCourse();
+        c2.printCourse();
+    }
+}
+//Encapsulation
+class Student {
+    private String name;
+    private int age;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setAge(int age) {
+        if (age > 0) {
+            this.age = age;
+        }
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Studentt s1 = new Studentt();
+
+        s1.setName("Ahmed");
+        s1.setAge(20);
+
+        System.out.println("Name: " + s1.getName());
+        System.out.println("Age: " + s1.getAge());
+
+        s1.setAge(-5);
+
+        System.out.println("Age: " + s1.getAge());
+    }
+}
+//defoult values
+class Student {
+    String name;
+    int age;
+    boolean isScienceMajor;
+    char gender;
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Studentt s1 = new Studentt();
+
+        System.out.println("Name: " + s1.name);
+        System.out.println("Age: " + s1.age);
+        System.out.println("Science Major: " + s1.isScienceMajor);
+        System.out.println("Gender: " + s1.gender);
+    }
+}
+//instance variable
+class Student {
+    String name;
+    int age;
+
+    public void displayInfo() {
+        System.out.println(name + " " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Studentt s1 = new Studentt();
+        Studentt s2 = new Studentt();
+
+        s1.name = "Hawa";
+        s1.age = 20;
+
+        s2.name = "Ali";
+        s2.age = 22;
+
+        s1.displayInfo();
+        s2.displayInfo();
+    }
+}
+//static variables
+class Student {
+    String name;
+
+    static String university = "JUST";
+
+    static void displayUniv() {
+        System.out.println(university);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Studentt s1 = new Studentt();
+        Studentt s2 = new Studentt();
+
+        s1.name = "Hawa";
+        s2.name = "Ali";
+
+        System.out.println(s1.name);
+        System.out.println(s2.name);
+
+        Studentt.displayUniv();
+    }
+}
+//static counter
+class Studentt {
+    static int count = 0;
+
+    Studentt() {
+        count++;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Studentt s1 = new Studentt();
+        Studentt s2 = new Studentt();
+        Studentt s3 = new Studentt();
+
+        System.out.println("Total Students: " + Studentt.count);
+    }
+}
+//access modifiers
+class Person {
+    protected String name = "Ahmed";
+}
+
+class Student extends Person {
+
+    private int age = 20;
+
+    void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Student s1 = new Student();
+
+        s1.display();
+    }
+}
+//public and private
+class Student {
+
+    public String name = "Hawa";
+
+    private int age = 20;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Student s1 = new Student();
+
+        s1.displayInfo();
+
+        System.out.println("Age using getter: " + s1.getAge());
+    }
+}
+//default access modifiers
+lass Student {
+
+String name = "Ali";
+
+void display() {
+    System.out.println("Student Name: " + name);
+}
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Student s1 = new Student();
+
+        s1.display();
+    }
+}
+//this keyword
+class Student {
+    private String name;
+    private int age;
+
+    public Student(String name, int age) {
+
+        this.name = name;
+        this.age = age;
+    }
+
+    void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Student s1 = new Student("Ahmed", 20);
+
+        s1.display();
+    }
+}
+//this() constructor
+class Student {
+    String name;
+    int age;
+
+    public Student() {
+        this("Ali", 10);
+    }
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Student s1 = new Student();
+
+        s1.display();
+    }
+}
